@@ -14,7 +14,8 @@ document.addEventListener('DOMContentLoaded', function(){
       cvs.height = cvs_h;
       back.width = cvs_w;
       back.height = cvs_h;
-
+      
+      
       draw(vid, ctx, backcontext, cvs_w, cvs_h);
   },false);
 }, false);
@@ -64,7 +65,7 @@ function draw(v, c, bc, cw, ch) {
   // Draw the pixels onto the visible canvas
   c.putImageData(data_x,0,0);
   // Start over!
-  setTimeout(draw,20,v,c,bc,cw,ch);
+  setTimeout(draw,0,v,c,bc,cw,ch);
 }
 
 // Tính tích chập theo kernel đưa vào
@@ -74,7 +75,7 @@ function draw(v, c, bc, cw, ch) {
 // - widthstep dùng để điều chỉnh lên dòng hay xuống dòng
 // - kernel_step dùng để điều chỉnh lùi cột hay tiến cột 
 // - i_local là biến chỉ vị trí xung quanh i 
-function convolution(data, idata, w, kernel, opaque=true, threshold=20){
+function convolution(data, idata, w, kernel, opaque=true, threshold_high=200, threshold_low=50){
 
   var kernel_size = Math.sqrt(kernel.length); 
 
@@ -119,34 +120,25 @@ function convolution(data, idata, w, kernel, opaque=true, threshold=20){
         }   
       } 
       
-        g3 += alphaFac * (255 - g3);
+        
         g = Math.abs(g);
         g1 = Math.abs(g1);
         g2 = Math.abs(g2);
         g3 = Math.abs(g3);
+        g3 += alphaFac * (255 - g3);
 
-    if(g > 255 ) {
-        g = 255;
-    }
-    if(g1 > 255 ) {
-        g1 = 255;
-    }
-    if(g2 > 255 ) {
-        g2 = 255;
-    }
-    if(g3 > 255 ) {
-        g3 = 255;
-    }
-
-    if(g < threshold ) {
-        g = 0;
-    }
-    if(g1 < threshold ) {
-        g1 = 0;
-    }
-    if(g2 < threshold ) {
-        g2 = 0;
-    }
+    // if(g > threshold_high && g < threshold_low ) {
+    //     g = 0;
+    // }
+    // if(g1 > threshold_high && g1 < threshold_low ) {
+    //     g1 = 0;
+    // }
+    // if(g2 > threshold_high && g2 < threshold_low ) {
+    //     g2 = 0;
+    // }
+    // if(g3 > threshold_high && g3 < threshold_low ) {
+    //     g3 = 0;
+    // }
    
       data[i] = g;
       data[i+1] = g1;
