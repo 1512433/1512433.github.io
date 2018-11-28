@@ -23,10 +23,10 @@ document.addEventListener('DOMContentLoaded', function(){
 function draw(v, c, cw, ch) {
   if(v.paused || v.ended) return false;
   // First, draw it into the canvas
-  c.drawImage(v,650,0, cw, ch);
+  c.drawImage(v,680,0, cw, ch);
 
   // Grab the pixel data from the canvas
-  var idata = c.getImageData(650,0,cw,ch);
+  var idata = c.getImageData(680,0,cw,ch);
  
   // Loop through the pixels, turning them grayscale
   for(var i = 0; i < idata.data.length; i+=4) {
@@ -48,7 +48,7 @@ function draw(v, c, cw, ch) {
 }
 //   idata.data = data;
   // Draw the pixels onto the visible canvas
-  c.putImageData(idata,650,0);
+  c.putImageData(idata,680,0);
   // Start over!
   setTimeout(draw,0,v,c,cw,ch);
 }
