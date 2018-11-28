@@ -103,4 +103,4 @@ function convolution(data, idata, w, kernel_x,kernel_y, opaque=true, threshold=0
     data[i] = g;
       
   }
-}
+} 
