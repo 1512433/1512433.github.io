@@ -138,14 +138,14 @@ function convolution(data, idata, w, kernel, opaque=true, threshold=200){
         g3 = 255;
     }
 
-    if(g > threshold ) {
-        g = threshold;
+    if(g < threshold ) {
+        g = 0;
     }
-    if(g1 > threshold ) {
-        g1 = threshold;
+    if(g1 < threshold ) {
+        g1 = 0;
     }
-    if(g2 > threshold ) {
-        g2 = threshold;
+    if(g2 < threshold ) {
+        g2 = 0;
     }
    
       data[i] = g;
