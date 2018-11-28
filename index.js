@@ -74,7 +74,7 @@ function draw(v, c, bc, cw, ch) {
 // - widthstep dùng để điều chỉnh lên dòng hay xuống dòng
 // - kernel_step dùng để điều chỉnh lùi cột hay tiến cột 
 // - i_local là biến chỉ vị trí xung quanh i 
-function convolution(data, idata, w, kernel, opaque=true, threshold=200){
+function convolution(data, idata, w, kernel, opaque=true, threshold=20){
 
   var kernel_size = Math.sqrt(kernel.length); 
 
